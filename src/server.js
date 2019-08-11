@@ -5,13 +5,13 @@ import graphqlHttp from 'express-graphql';
 import mongoose from 'mongoose'
 
 import schema from './schema'
-
-
+import {isAuth} from './middleware/isAuth'
 const app = express();
 
 app.use(cors())
 app.use(urlencoded({ extended: true }))
 app.use(json())
+app.use(isAuth)
 
 // Connecting to the database
 const url = "mongodb://127.0.0.1:27017/mydb"
