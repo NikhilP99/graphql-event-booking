@@ -30,7 +30,7 @@ export const resolvers = {
             if(!req.isAuth){
                 throw Error("not authenticated")
             }
-            return Booking.find({}).populate([{
+            return Booking.find({user: req.userId}).populate([{
                 path:'user',
                 model:'User',
                 populate:{
